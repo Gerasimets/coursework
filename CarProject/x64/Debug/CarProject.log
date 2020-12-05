@@ -1,0 +1,15 @@
+﻿  stdafx.cpp
+  Car.cpp
+  CarBuilder.cpp
+  KiaBuilder.cpp
+  KiaCar.cpp
+  main.cpp
+  NissanBuilder.cpp
+  NissanCar.cpp
+  ToyotaBuilder.cpp
+  ToyotaCar.cpp
+  VazBuilder.cpp
+  VazCar.cpp
+  VehicleSize.cpp
+  Создание кода...
+  CarProject.vcxproj -> C:\Users\HP\source\repos\coursework\x64\Debug\CarProject.exe
