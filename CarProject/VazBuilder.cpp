@@ -2,11 +2,9 @@
 #include "VazBuilder.h"
 #include "VazCar.h"
 
-
 VazBuilder::VazBuilder() {
     reset();
 }
-
 
 VazBuilder::~VazBuilder() {
 }

@@ -7,10 +7,8 @@ NissanBuilder::NissanBuilder() {
     reset();
 }
 
-
 NissanBuilder::~NissanBuilder() {
 }
-
 
 void NissanBuilder::reset() {
     car = new NissanCar;

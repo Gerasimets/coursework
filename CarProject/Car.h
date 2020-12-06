@@ -31,6 +31,8 @@ class Car
     double trunkVolume; // объем багажника
 protected:
     Car(); //конструктор ///// почему он в протектед?///////////////////////////
+    virtual std::string getFileName() = 0;
+    virtual void writeAdditionalData(std::ofstream& ofs) = 0;
 public:
     virtual ~Car();
     void setColor(Color value); 
@@ -41,5 +43,7 @@ public:
     void setModel(std::string value);
     void setTireBrand(std::string value);
     void setTrunkVolume(double value);
+    virtual void display();
+    void save();
 };
 
