@@ -88,13 +88,14 @@ void Car::display() { //отображает общие характеристики
     cout << "Trunk volume: " << trunkVolume << endl;
 }
 
-void Car::save() {
+void Car::save() { //запись машин в файл
     ofstream ofs;
-    ofs.open(getFileName(), std::ios::app);
-    if (!ofs.is_open()) {
-        cerr << "Failed to open file " << getFileName() << endl;
+    ofs.open(getFileName(), std::ios::app); //открываем файл для записи в конец
+    if (!ofs.is_open()) { //если не удалось открыть
+        cerr << "Failed to open file " << getFileName() << endl; //выводим какой файл не удалось открыть
         return;
     }
+    /*если открыть удалось, заносим данные в файл*/
     ofs << (int)color << endl;
     ofs << (int)engineType << endl;
     ofs << size.getX() << endl;
@@ -106,5 +107,5 @@ void Car::save() {
     ofs << tireBrand << endl;
     ofs << trunkVolume << endl;
     writeAdditionalData(ofs);
-    ofs.close();
+    ofs.close(); //закрываем файл
 }

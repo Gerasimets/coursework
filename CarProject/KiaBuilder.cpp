@@ -16,5 +16,5 @@ void KiaBuilder::reset() {
 }
 
 void KiaBuilder::setHeatedMirrors(bool value) {
-    ((KiaCar*)car)->setHeatedMirrors(value);
+    ((KiaCar*)car)->setHeatedMirrors(value); //так как мы знаем, что это указатель не просто на машину, а что это машина будет марки киа, то этот указатель будет киакар
 }

@@ -30,7 +30,7 @@ void KiaCar::display() { // вывод машин
 
 
 string KiaCar::getFileName() {
-    return "kia";
+    return "kia"; //возвращает имя файла
 }
 
 void KiaCar::writeAdditionalData(ofstream& ofs) {

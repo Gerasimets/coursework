@@ -43,6 +43,6 @@ void CarBuilder::setTrunkVolume(double value) {
 }
 
 Car *CarBuilder::getResult() {
-    return car;
+    return car; //возвращает адрес того, гдехранится машина
 }
 

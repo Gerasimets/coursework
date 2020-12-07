@@ -32,10 +32,10 @@ no
 */
 
 #include "stdafx.h"
-#include <fstream>
-#include <cstring>
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <cstring>
 #include "KiaBuilder.h"
 #include "NissanBuilder.h"
 #include "ToyotaBuilder.h"
@@ -85,9 +85,9 @@ Choice makeChoice() {
 
 void cleanAll(vector<Car*>& cars) {
     for (auto car : cars) { // Выполняется итерация по каждому элементу массива
-        delete car;
+        delete car; //очищаем, так как машины были созданы с помощью new (саму машину, не адрес)
     }
-    cars.clear();
+    cars.clear(); //очищаем список адресов
 }
 
 void printAll(vector<Car*>& cars) { //вывод машин на экран
@@ -218,7 +218,7 @@ Car* makeKia() {
     string answer;
     cin >> answer;
     builder.setHeatedMirrors(answer == "yes");
-    return builder.getResult();
+    return builder.getResult(); //возвращает адрес того, гдехранится машина
 }
 
 Car* makeNissan() {
@@ -253,23 +253,24 @@ Car* makeVaz() {
 
 // true on success; otherwise false
 bool loadCar(CarBuilder& builder, ifstream& file, int carNumber, const char* path) {
-    int color, engineType, x, y, z, year, doorsCount;
+    int color, engineType, x, y, z, year, doorsCount; 
     string model, tireBrand;
     double trunkVolume;
     if (!(file >> color >> engineType >> x >> y >> z >> year >>
-        doorsCount)) {
-        if (!file.eof()) {
-            char* msg = new char[MAX_MY_STR];
-            sprintf_s(msg, MAX_MY_STR, "Bad format for car #%d in file \"%s\"", carNumber, path);
-            throw msg;
+        doorsCount)) { //читаем из файла данные, если не удалось этого сделать и..
+        if (!file.eof()) { // ..и если это не конец файла, то
+            char* msg = new char[MAX_MY_STR]; //////////////////////////////
+            sprintf_s(msg, MAX_MY_STR, "Bad format for car #%d in file \"%s\"", carNumber, path); //выводим информацию об ошибке
+            throw msg; //выбрасываем ошибку
         }
         return false;
     }
     string tmp;
-    getline(file, tmp);
-    getline(file, model);
-    getline(file, tireBrand);
-    file >> trunkVolume;
+    getline(file, tmp); //считываем строку. тк последним считали число, чтобы не считывать пустоту, "съедае" строку
+    getline(file, model); //считываем модель машины 7
+    getline(file, tireBrand); //считываем марку шин
+    file >> trunkVolume; //считываем объем двигателя
+    /*задаем данные, которые считали*/
     builder.setColor((Color)color);
     builder.setEngineType((EngineType)engineType);
     VehicleSize vehicleSize(x, y, z);
@@ -284,31 +285,31 @@ bool loadCar(CarBuilder& builder, ifstream& file, int carNumber, const char* pat
 
 void loadAll(vector<Car*>& cars) {
     bool specInfo;
-    ifstream kiaFile("kia");
+    ifstream kiaFile("kia"); //открываем файл с именем киа
     int carNumber = 0;
-    if (kiaFile.is_open()) {
+    if (kiaFile.is_open()) { //если удалось открыть файл
         while (true) {
             carNumber++;
-            KiaBuilder builder;
+            KiaBuilder builder; //создали объект типа KiaBuilder
             bool success;
-            try {
-                success = loadCar(builder, kiaFile, carNumber, "kia");
+            try { 
+                success = loadCar(builder, kiaFile, carNumber, "kia"); //задаем информацию
             }
-            catch (const char* msg) {
-                cerr << msg << endl;
-                delete msg;
+            catch (const char* msg) { //если что-то пошло не так
+                cerr << msg << endl; //выведет сообщение об ошибке
+                delete msg; //удаляем из памяти
+                delete builder.getResult(); //удаляем, так как создавали, но не применили
+                break;
+            }
+            if (!success) { /////////////////////////////////////
                 delete builder.getResult();
                 break;
             }
-            if (!success) {
-                delete builder.getResult();
-                break;
-            }
-            kiaFile >> specInfo;
-            builder.setHeatedMirrors(specInfo);
-            cars.push_back(builder.getResult());
+            kiaFile >> specInfo; //считываем индивидуальную характеристику
+            builder.setHeatedMirrors(specInfo); //передаем
+            cars.push_back(builder.getResult()); //добавляем полученную машину в результирующий вектор
         }
-        kiaFile.close();
+        kiaFile.close(); //закрываем файл
     }
     ifstream nissanFile("nissan");
     if (nissanFile.is_open()) {
@@ -390,18 +391,18 @@ void loadAll(vector<Car*>& cars) {
     }
 }
 
-void eraseContent(const char* file_path) {
-    ofstream ofs;
-    ofs.open(file_path);
-    ofs.close();
+void eraseContent(const char* file_path) { //очищаем файл 
+    ofstream ofs; 
+    ofs.open(file_path); //открыли файл для записи
+    ofs.close(); //закрыли
 }
 
 void saveAll(vector<Car*>& cars) {
-    eraseContent("kia");
+    eraseContent("kia"); 
     eraseContent("nissan");
     eraseContent("toyota");
     eraseContent("vaz");
-    for (auto car : cars) {
+    for (auto car : cars) { //для каждой машины вызываем метод save()
         car->save();
     }
 }
@@ -409,20 +410,20 @@ void saveAll(vector<Car*>& cars) {
 // returns index of the required car
 int findCar(vector<Car*>& cars) {
     int carNumber;
-    while (true) {
+    while (true) { 
         cout << "Choose car by number: ";
-        if (cin >> carNumber) {
-            if (carNumber >= 1 && carNumber <= (int)(cars.size())) {
+        if (cin >> carNumber) { //если считали номер машины
+            if (carNumber >= 1 && carNumber <= (int)(cars.size())) { // если номер машины >= 1 && <= количества машин, то идем дальше
                 break;
             }
         }
-        else {
-            cin.clear();
-            cin.ignore(MAX_IGNORE, '\n');
+        else { // если что-то не так, то
+            cin.clear(); //очищаем
+            cin.ignore(MAX_IGNORE, '\n'); //игнорируем
         }
-        cout << "Wrong choice. Try again" << endl;
+        cout << "Wrong choice. Try again" << endl; //выводим сообщение об ошибке
     }
-    return carNumber - 1;
+    return carNumber - 1; //возвращаем номер машины - 1, тк начинается с 0
 }
 
 void editCar(vector<Car*>& cars) {
@@ -485,31 +486,32 @@ int main()
             cout << "Creating KIA" << endl;
             cars.push_back(makeKia()); //получили адрес и добавляем его в конец списка указателей
             break;
-        case CMD_MAKE_NISSAN:
+        case CMD_MAKE_NISSAN: //создание ниссан
             cout << "Creating Nissan" << endl;
             cars.push_back(makeNissan());
             break;
-        case CMD_MAKE_TOYOTA:
+        case CMD_MAKE_TOYOTA: //создания тайота
             cout << "Creating Toyota" << endl;
             cars.push_back(makeToyota());
             break;
-        case CMD_MAKE_VAZ:
+        case CMD_MAKE_VAZ: //создание ваз
             cout << "Creating VAZ" << endl;
             cars.push_back(makeVaz());
             break;
-        case CMD_LOAD_ALL:
-            loadAll(cars);
-            break;
-        case CMD_SAVE_ALL:
+        case CMD_SAVE_ALL: //сохранить в файл
             saveAll(cars);
             break;
-        case CMD_EDIT_CAR:
+        case CMD_LOAD_ALL: //загрузка данных из файла
+            cleanAll(cars); //очистили весь список машин
+            loadAll(cars); //грузим из файла
+            break;
+        case CMD_EDIT_CAR: //изменить машину
             editCar(cars);
             break;
-        case CMD_REMOVE_CAR:
+        case CMD_REMOVE_CAR: //удалить машину
             removeCar(cars);
             break;
-        case CMD_SHOW_CAR:
+        case CMD_SHOW_CAR: //вывести машину на экран
             showCar(cars);
             break;
         }
