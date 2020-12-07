@@ -4,7 +4,7 @@
 
 class CarBuilder {
 protected:
-    Car *car; // создали указатель типа car /////////////////////////
+    Car *car; // создали указатель типа car
     CarBuilder();
 public:
     virtual ~CarBuilder();

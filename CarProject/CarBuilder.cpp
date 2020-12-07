@@ -9,12 +9,13 @@ CarBuilder::CarBuilder() {
 CarBuilder::~CarBuilder() {
 }
 
+//значение, которе получили задаем в качестве нового для нашей машины
 void CarBuilder::setColor(Color value) {
     car->setColor(value);
 }
 
 void CarBuilder::setEngineType(EngineType value) {
-    car->setEngineType(value);
+    car->setEngineType(value); 
 }
 
 void CarBuilder::setSize(VehicleSize value) {

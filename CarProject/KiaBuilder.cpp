@@ -11,7 +11,8 @@ KiaBuilder::~KiaBuilder() {
 }
 
 void KiaBuilder::reset() {
-    car = new KiaCar;
+    car = new KiaCar; // выделить память под переменную типа KiaCar, возвращает алрес, где будет храниться
+													
 }
 
 void KiaBuilder::setHeatedMirrors(bool value) {

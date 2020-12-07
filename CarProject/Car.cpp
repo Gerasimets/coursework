@@ -52,7 +52,7 @@ void Car::setTrunkVolume(double value) {
     trunkVolume = value;
 }
 
-void Car::display() {
+void Car::display() { //отображает общие характеристики
     string colorStr;
     if (color == COLOR_BLACK) {
         colorStr = "black";

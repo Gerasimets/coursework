@@ -17,13 +17,13 @@ void NissanCar::setHeatedSeats(bool value) {
     heatedSeats = value;
 }
 
-void NissanCar::display() {
+void NissanCar::display() { // вывод машин 
     cout << "Car type: Nissan" << endl;
-    Car::display();
-    if (heatedSeats) {
-        cout << "With heated seats" << endl;
+    Car::display(); //вызываем display(), который отображает общие характеристики
+    if (heatedSeats) { //если есть подогрев сидений, то
+        cout << "With heated seats" << endl; //печтаем это
     }
-    else {
+    else { //иначе...
         cout << "Seats are not heated" << endl;
     }
 }

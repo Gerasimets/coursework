@@ -17,13 +17,13 @@ void KiaCar::setHeatedMirrors(bool value) {
     heatedMirrors = value;
 }
 
-void KiaCar::display() {
-    cout << "Car type: KIA" << endl;
-    Car::display();
-    if (heatedMirrors) {
-        cout << "Mirrors are heated" << endl;
+void KiaCar::display() { // вывод машин 
+    cout << "Car type: KIA" << endl; 
+    Car::display(); //вызываем display(), который отображает общие характеристики
+    if (heatedMirrors) { //если есть подогрев зеркал, то...
+        cout << "Mirrors are heated" << endl; // печатем это
     }
-    else {
+    else { //иначе...
         cout << "Mirrors are not heated" << endl;
     }
 }

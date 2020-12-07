@@ -31,8 +31,8 @@ class Car
     double trunkVolume; // объем багажника
 protected:
     Car(); //конструктор ///// почему он в протектед?///////////////////////////
-    virtual std::string getFileName() = 0;
-    virtual void writeAdditionalData(std::ofstream& ofs) = 0;
+    virtual std::string getFileName() = 0; //чисто виртуальная функция, так как имя файля у каждого свое
+    virtual void writeAdditionalData(std::ofstream& ofs) = 0; //чисто виртуальная функция, так как доп характеристики у каждого свои
 public:
     virtual ~Car();
     void setColor(Color value); 

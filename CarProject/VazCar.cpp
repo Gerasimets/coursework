@@ -15,10 +15,10 @@ void VazCar::setTrunkOnRoof(bool value) {
     trunkOnRoof = value;
 }
 
-void VazCar::display() {
+void VazCar::display() { //вывод машин
     cout << "Car type: VAZ" << endl;
-    Car::display();
-    if (trunkOnRoof) {
+    Car::display(); //вызываем display(), который отображает общие характеристики
+    if (trunkOnRoof) { //если есть багажник на крыше, то
         cout << "Trunk is on roof" << endl;
     }
     else {

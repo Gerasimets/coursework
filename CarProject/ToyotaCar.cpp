@@ -15,13 +15,13 @@ void ToyotaCar::setAutomaticTransmission(bool value) {
     automaticTransmission = value;
 }
 
-void ToyotaCar::display() {
+void ToyotaCar::display() { //вывод машин
     cout << "Car type: Toyota" << endl;
-    Car::display();
-    if (automaticTransmission) {
+    Car::display(); //вызываем display(), который отображает общие характеристики
+    if (automaticTransmission) { //если АКПП, то печатем, что АКПП
         cout << "Automatic transmission" << endl;
     }
-    else {
+    else { //иначе
         cout << "Manual transmission" << endl;
     }
 }
