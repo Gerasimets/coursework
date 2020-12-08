@@ -5,7 +5,7 @@
 
 using namespace std;
 
-VazCar::VazCar() {
+VazCar::VazCar() : trunkOnRoof(false) {
 }
 
 VazCar::~VazCar() {

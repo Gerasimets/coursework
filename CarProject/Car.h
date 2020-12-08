@@ -3,19 +3,19 @@
 #include <string>
 #include "VehicleSize.h"
 
-enum Color //перечисляемый тип данных, цвет машины
+enum class Color //перечисляемый тип данных, цвет машины
 {
-    COLOR_BLACK,
-    COLOR_YELLOW,
-    COLOR_RED,
-    COLOR_PINK,
-    COLOR_BLUE
+    BLACK,
+    YELLOW,
+    RED,
+    PINK,
+    BLUE
 };
 
-enum EngineType // перчисляемый тип данных, тип двигателя
+enum class EngineType // перчисляемый тип данных, тип двигателя
 {
-    ENGINE_TYPE_DIESEL, // дизельный
-    ENGINE_TYPE_INJECTOR // инжекторный
+    DIESEL, // дизельный
+    INJECTOR // инжекторный
 };
 
 class Car 

@@ -6,7 +6,7 @@
 using namespace std;
 
 
-KiaCar::KiaCar() {
+KiaCar::KiaCar() : heatedMirrors(false) {
 }
 
 

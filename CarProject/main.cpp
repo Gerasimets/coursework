@@ -46,19 +46,19 @@ using namespace std;
 #define MAX_IGNORE 10000
 #define MAX_MY_STR 250
 
-enum Choice //перечисляемый тип, пункты меню
+enum class Choice //перечисляемый тип, пункты меню
 {
-    CMD_PRINT_ALL = 1,
-    CMD_MAKE_KIA,
-    CMD_MAKE_NISSAN,
-    CMD_MAKE_TOYOTA,
-    CMD_MAKE_VAZ,
-    CMD_SAVE_ALL,
-    CMD_LOAD_ALL,
-    CMD_EDIT_CAR,
-    CMD_REMOVE_CAR,
-    CMD_SHOW_CAR,
-    CMD_EXIT
+    PRINT_ALL = 1,
+    MAKE_KIA,
+    MAKE_NISSAN,
+    MAKE_TOYOTA,
+    MAKE_VAZ,
+    SAVE_ALL,
+    LOAD_ALL,
+    EDIT_CAR,
+    REMOVE_CAR,
+    SHOW_CAR,
+    EXIT
 };
 
 Choice makeChoice() {
@@ -75,10 +75,10 @@ Choice makeChoice() {
     cout << "[other] Exit application" << endl; //выход
     int choice;
     if (!(cin >> choice)) { //если напечатал не число...
-        return (Choice)CMD_EXIT; // то возвраещаем CMD_EXIT типа данных Choice 
+        return Choice::EXIT; // то возвраещаем CMD_EXIT типа данных Choice 
     }
-    if (choice < 1 || choice >= (int)CMD_EXIT) { // если < 1 или >=11, то 
-        return (Choice)CMD_EXIT; //возвраещаем CMD_EXIT
+    if (choice < 1 || choice >= (int)Choice::EXIT) { // если < 1 или >=11, то 
+        return Choice::EXIT; //возвраещаем CMD_EXIT
     }
     return (Choice)choice; //если все ок, возвращаем выбранный пункт меню
 }
@@ -112,20 +112,20 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
         cout << "Color (black, yellow, red, pink, blue): ";
         cin >> color; //считываем цвет
         if (color == "black") { //если черный, то
-            builder.setColor(COLOR_BLACK); // присваиваем черный
+            builder.setColor(Color::BLACK); // присваиваем черный
         }
         else if (color == "yellow") { //если желтый, то
-            builder.setColor(COLOR_YELLOW); //передаем желтый
+            builder.setColor(Color::YELLOW); //передаем желтый
         }
         /*и так далее с остальными цветами*/
         else if (color == "red") {
-            builder.setColor(COLOR_RED);
+            builder.setColor(Color::RED);
         }
         else if (color == "pink") {
-            builder.setColor(COLOR_PINK);
+            builder.setColor(Color::PINK);
         }
         else if (color == "blue") {
-            builder.setColor(COLOR_BLUE);
+            builder.setColor(Color::BLUE);
         }
         else { //если введено что-то другое, просим пользователя попробовать ввести снова
             cout << "Wrong color. Please try again" << endl;
@@ -138,10 +138,10 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
         cout << "Engine type (diesel, injector): ";
         cin >> engineType;
         if (engineType == "diesel") {
-            builder.setEngineType(ENGINE_TYPE_DIESEL);
+            builder.setEngineType(EngineType::DIESEL);
         }
         else if (engineType == "injector") {
-            builder.setEngineType(ENGINE_TYPE_INJECTOR);
+            builder.setEngineType(EngineType::INJECTOR);
         }
         else {
             cout << "Wrong engine type. Please try again" << endl;
@@ -412,18 +412,26 @@ int findCar(vector<Car*>& cars) {
     int carNumber;
     while (true) { 
         cout << "Choose car by number: ";
-        if (cin >> carNumber) { //если считали номер машины
-            if (carNumber >= 1 && carNumber <= (int)(cars.size())) { // если номер машины >= 1 && <= количества машин, то идем дальше
+        // если считали номер машины
+        if (cin >> carNumber) {
+            // если номер машины >= 1 && <= количества машин, то выходим из цикла while
+            if (carNumber >= 1 && carNumber <= (int)(cars.size())) {
                 break;
             }
         }
-        else { // если что-то не так, то
-            cin.clear(); //очищаем
-            cin.ignore(MAX_IGNORE, '\n'); //игнорируем
+        else {
+            // если пользователь ввёл что-то, не являющееся числом, то
+            // убираем факт наличия ошибки при вводе из cin.
+            cin.clear();
+            // игнорируем все введённые пользователем символы вплоть до и включая символ '\n',
+            // но не более чем MAX_IGNORE символов.
+            cin.ignore(MAX_IGNORE, '\n');
         }
-        cout << "Wrong choice. Try again" << endl; //выводим сообщение об ошибке
+        // выводим сообщение об ошибке
+        cout << "Wrong choice. Try again" << endl;
     }
-    return carNumber - 1; //возвращаем номер машины - 1, тк начинается с 0
+    // возвращаем номер машины - 1, тк начинается с 0
+    return carNumber - 1;
 }
 
 void editCar(vector<Car*>& cars) {
@@ -479,43 +487,43 @@ int main()
     do {
         choice = makeChoice(); //получили команду, которую выбрал пользователь
         switch (choice) {
-        case CMD_PRINT_ALL: //вывод машин 
+        case Choice::PRINT_ALL: //вывод машин 
             printAll(cars); 
             break;
-        case CMD_MAKE_KIA: //создание киа
+        case Choice::MAKE_KIA: //создание киа
             cout << "Creating KIA" << endl;
             cars.push_back(makeKia()); //получили адрес и добавляем его в конец списка указателей
             break;
-        case CMD_MAKE_NISSAN: //создание ниссан
+        case Choice::MAKE_NISSAN: //создание ниссан
             cout << "Creating Nissan" << endl;
             cars.push_back(makeNissan());
             break;
-        case CMD_MAKE_TOYOTA: //создания тайота
+        case Choice::MAKE_TOYOTA: //создания тайота
             cout << "Creating Toyota" << endl;
             cars.push_back(makeToyota());
             break;
-        case CMD_MAKE_VAZ: //создание ваз
+        case Choice::MAKE_VAZ: //создание ваз
             cout << "Creating VAZ" << endl;
             cars.push_back(makeVaz());
             break;
-        case CMD_SAVE_ALL: //сохранить в файл
+        case Choice::SAVE_ALL: //сохранить в файл
             saveAll(cars);
             break;
-        case CMD_LOAD_ALL: //загрузка данных из файла
+        case Choice::LOAD_ALL: //загрузка данных из файла
             cleanAll(cars); //очистили весь список машин
             loadAll(cars); //грузим из файла
             break;
-        case CMD_EDIT_CAR: //изменить машину
+        case Choice::EDIT_CAR: //изменить машину
             editCar(cars);
             break;
-        case CMD_REMOVE_CAR: //удалить машину
+        case Choice::REMOVE_CAR: //удалить машину
             removeCar(cars);
             break;
-        case CMD_SHOW_CAR: //вывести машину на экран
+        case Choice::SHOW_CAR: //вывести машину на экран
             showCar(cars);
             break;
         }
-    } while (choice != CMD_EXIT); //пока не выход
+    } while (choice != Choice::EXIT); //пока не выход
     cleanAll(cars); //удаляем машины
     return 0;
 }

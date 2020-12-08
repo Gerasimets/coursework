@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ToyotaCar::ToyotaCar() {
+ToyotaCar::ToyotaCar() : automaticTransmission(false) {
 }
 
 ToyotaCar::~ToyotaCar() {

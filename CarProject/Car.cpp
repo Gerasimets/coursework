@@ -6,8 +6,8 @@
 using namespace std;
 
 Car::Car() // по умолчанию данные 
-    : color(COLOR_BLACK),
-    engineType(ENGINE_TYPE_INJECTOR),
+    : color(Color::BLACK),
+    engineType(EngineType::INJECTOR),
     engineVolume(1.7),
     yearOfBirthday(2000),
     doorsCount(5),
@@ -54,23 +54,23 @@ void Car::setTrunkVolume(double value) {
 
 void Car::display() { //отображает общие характеристики
     string colorStr;
-    if (color == COLOR_BLACK) {
+    if (color == Color::BLACK) {
         colorStr = "black";
     }
-    else if (color == COLOR_BLUE) {
+    else if (color == Color::BLUE) {
         colorStr = "blue";
     }
-    else if (color == COLOR_PINK) {
+    else if (color == Color::PINK) {
         colorStr = "pink";
     }
-    else if (color == COLOR_RED) {
+    else if (color == Color::RED) {
         colorStr = "red";
     }
-    else if (color == COLOR_YELLOW) {
+    else if (color == Color::YELLOW) {
         colorStr = "yellow";
     }
     string engineTypeStr;
-    if (engineType == ENGINE_TYPE_DIESEL) {
+    if (engineType == EngineType::DIESEL) {
         engineTypeStr = "diesel";
     }
     else {

@@ -6,7 +6,7 @@
 using namespace std;
 
 
-NissanCar::NissanCar() {
+NissanCar::NissanCar() : heatedSeats(false) {
 }
 
 

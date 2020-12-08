@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Car">
+    <Position X="4.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAASAAAgBAohAEAAAABEAABCAAAAAQRAoAAY=</HashCode>
+      <FileName>Car.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CarBuilder">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAEAAAAAAgBAgAAAIAAADAAQAAAAAAAQQAIAAA=</HashCode>
+      <FileName>CarBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KiaBuilder">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>KiaBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KiaCar">
+    <Position X="5.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAABAAAAAgAEAQAAAAAAAEAAAAAA=</HashCode>
+      <FileName>KiaCar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NissanBuilder">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAAAA=</HashCode>
+      <FileName>NissanBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NissanCar">
+    <Position X="1" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAACEAAgAAAAAAACAAAAA=</HashCode>
+      <FileName>NissanCar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToyotaBuilder">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABEAAAAAAAAAAAIAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>ToyotaBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToyotaCar">
+    <Position X="7.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAABAQAAAAAEAAAAAAAAAAAAABAE=</HashCode>
+      <FileName>ToyotaCar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VazBuilder">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAEAAAAABAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>VazBuilder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VazCar">
+    <Position X="3.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACEBAAAAAAAFAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>VazCar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VehicleSize" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAABgAWABAAA=</HashCode>
+      <FileName>VehicleSize.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Choice" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAgAAAAAAAAAAggAAAAgAFAAAEAAAGAAAAAAAA=</HashCode>
+      <FileName>main.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Color" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAABAEAIgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Car.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EngineType" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Car.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

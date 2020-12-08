@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "CarBuilder.h"
 
+enum class Color;
+enum class EngineType;
 
-CarBuilder::CarBuilder() {
+
+CarBuilder::CarBuilder() : car(nullptr) {
 }
 
 
