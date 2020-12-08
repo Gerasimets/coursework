@@ -5,10 +5,8 @@
 
 using namespace std;
 
-
 KiaCar::KiaCar() : heatedMirrors(false) {
 }
-
 
 KiaCar::~KiaCar() {
 }
@@ -27,7 +25,6 @@ void KiaCar::display() { // вывод машин
         cout << "Mirrors are not heated" << endl;
     }
 }
-
 
 string KiaCar::getFileName() {
     return "kia"; //возвращает имя файла

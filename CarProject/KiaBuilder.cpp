@@ -6,7 +6,6 @@ KiaBuilder::KiaBuilder() {
     reset();
 }
 
-
 KiaBuilder::~KiaBuilder() {
 }
 

@@ -8,12 +8,12 @@ using namespace std;
 Car::Car() // по умолчанию данные 
     : color(Color::BLACK),
     engineType(EngineType::INJECTOR),
-    engineVolume(1.7),
     yearOfBirthday(2000),
     doorsCount(5),
     model("<Unknown>"),
     tireBrand("<Unknown>"),
-    trunkVolume(450.0)
+    trunkVolume(450.0),
+    engineVolume(1.7)
 {
 }
 
@@ -52,6 +52,10 @@ void Car::setTrunkVolume(double value) {
     trunkVolume = value;
 }
 
+void Car::setEngineVolume(double value) {
+    engineVolume = value;
+}
+
 void Car::display() { //отображает общие характеристики
     string colorStr;
     if (color == Color::BLACK) {
@@ -86,6 +90,7 @@ void Car::display() { //отображает общие характеристики
     cout << "Model: " << model << endl;
     cout << "Tire brand: " << tireBrand << endl;
     cout << "Trunk volume: " << trunkVolume << endl;
+    cout << "Engine volume: " << engineVolume << endl;
 }
 
 void Car::save() { //запись машин в файл
@@ -106,6 +111,7 @@ void Car::save() { //запись машин в файл
     ofs << model << endl;
     ofs << tireBrand << endl;
     ofs << trunkVolume << endl;
+    ofs << engineVolume << endl;
     writeAdditionalData(ofs);
     ofs.close(); //закрываем файл
 }

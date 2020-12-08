@@ -6,7 +6,6 @@ ToyotaBuilder::ToyotaBuilder() {
     reset();
 }
 
-
 ToyotaBuilder::~ToyotaBuilder() {
 }
 

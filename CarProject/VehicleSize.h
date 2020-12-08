@@ -6,7 +6,7 @@ class VehicleSize //класс габаритов машины
     int z; //высота
 public:
     VehicleSize(); //конструктор
-    VehicleSize(int x, int y, int z); //конструктор с параметром???????????????????
+    VehicleSize(int x, int y, int z); //конструктор с параметром
     virtual ~VehicleSize(); //виртуальный диструктор
     /*получаем данные*/
     int getX(); 

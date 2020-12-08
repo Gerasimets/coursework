@@ -8,7 +8,7 @@ protected:
     CarBuilder();
 public:
     virtual ~CarBuilder();
-    virtual void reset() = 0; // чисто виртуальная функция (что она делает?)
+    virtual void reset() = 0; // чисто виртуальная функция
     /*для получения данных*/
     void setColor(Color value);
     void setEngineType(EngineType value);
@@ -18,5 +18,6 @@ public:
     void setModel(std::string value);
     void setTireBrand(std::string value);
     void setTrunkVolume(double value);
-    Car *getResult(); // почему функция со звездочкой ////////////////
+    void setEngineVolume(double value);
+    Car *getResult(); // почему функция со звездочкой /////////////////////////////////////
 };

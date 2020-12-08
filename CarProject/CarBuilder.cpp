@@ -2,12 +2,10 @@
 #include "CarBuilder.h"
 
 enum class Color;
-enum class EngineType;
-
+enum class EngineType; /////////////////////////////////////////////////////////////
 
 CarBuilder::CarBuilder() : car(nullptr) {
 }
-
 
 CarBuilder::~CarBuilder() {
 }
@@ -45,7 +43,11 @@ void CarBuilder::setTrunkVolume(double value) {
     car->setTrunkVolume(value);
 }
 
+void CarBuilder::setEngineVolume(double value) {
+    car->setEngineVolume(value);
+}
+
 Car *CarBuilder::getResult() {
-    return car; //возвращает адрес того, гдехранится машина
+    return car; //возвращает адрес того, где хранится машина
 }
 

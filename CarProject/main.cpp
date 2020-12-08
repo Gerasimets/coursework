@@ -101,9 +101,9 @@ void printAll(vector<Car*>& cars) { //вывод машин на экран
     }
 }
 
-void skipLine() {
+void skipLine() {  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     string tmp;
-    getline(cin, tmp);
+    getline(cin, tmp); //считываем 
 }
 
 void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
@@ -133,7 +133,9 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
         }
         break;
     }
-    while (true) { //тип двигателя
+
+    //тип двигателя
+    while (true) { 
         string engineType;
         cout << "Engine type (diesel, injector): ";
         cin >> engineType;
@@ -149,7 +151,9 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
         }
         break;
     }
-    int x, y, z; //габариты машины
+
+    //габариты машины
+    int x, y, z; 
     cout << "Length of car (cm): ";
     while (!(cin >> x)) { //пока не считали длину
         cin.clear(); //очищаем
@@ -173,7 +177,9 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
     }
     VehicleSize vehicleSize(x, y, z); //передаем габариты
     builder.setSize(vehicleSize); 
-    cout << "Year of creation: "; //год создания
+
+    //год создания
+    cout << "Year of creation: "; 
     int creationYear;
     while (!(cin >> creationYear)) { //пока не считали год создания, то
         cin.clear(); //очищаем
@@ -181,8 +187,10 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
         cout << "It's not a number. Try again" << endl;
         cout << "Year of creation: ";
     }
-    builder.setYearOfBirthday(creationYear); //вызываем ф-ию для объекта класса 
-    cout << "Doors count: "; // количество дверей
+    builder.setYearOfBirthday(creationYear); //вызываем ф-ию для объекта класса
+
+    // количество дверей
+    cout << "Doors count: "; 
     int doorsCount;
     while (!(cin >> doorsCount)) { //пока не считали
         cin.clear();
@@ -191,24 +199,41 @@ void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
         cout << "Doors count: ";
     }
     builder.setDoorsCount(doorsCount); //вызыв ф-ии для объекта builder
+
+    //модель
     cout << "Model: ";
     skipLine(); //
     string model;
     getline(cin, model); //считываем модель
     builder.setModel(model); //вызыв ф-ии для объекта builder
+
+    //марка шин
     cout << "Tire brand: ";
     string tireBrand;
     getline(cin, tireBrand); //считываем марку шин
     builder.setTireBrand(tireBrand);
-    cout << "Trunk volume (1.7 or other): ";
+
+    //объем багажника
+    cout << "Trunk volume (450 or other): ";
     double trunkVolume;
     while (!(cin >> trunkVolume)) { //пока не считали
         cin.clear();
         cin.ignore(MAX_IGNORE, '\n');
         cout << "It's not a number. Try again" << endl;
-        cout << "Trunk volume (1.7 or other): ";
+        cout << "Trunk volume (450 or other): ";
     }
     builder.setTrunkVolume(trunkVolume);
+
+    //объем двигателя
+    cout << "Engine volume (1.7 or other): ";
+    double engineVolume;
+    while (!(cin >> engineVolume)) { //пока не считали
+        cin.clear();
+        cin.ignore(MAX_IGNORE, '\n');
+        cout << "It's not a number. Try again" << endl;
+        cout << "Engine volume (1.7 or other): ";
+    }
+    builder.setEngineVolume(engineVolume);
 }
 
 Car* makeKia() {
@@ -253,23 +278,24 @@ Car* makeVaz() {
 
 // true on success; otherwise false
 bool loadCar(CarBuilder& builder, ifstream& file, int carNumber, const char* path) {
-    int color, engineType, x, y, z, year, doorsCount; 
+    int color, engineType, x, y, z, year, doorsCount;
     string model, tireBrand;
-    double trunkVolume;
+    double trunkVolume, engineVolume;
     if (!(file >> color >> engineType >> x >> y >> z >> year >>
         doorsCount)) { //читаем из файла данные, если не удалось этого сделать и..
         if (!file.eof()) { // ..и если это не конец файла, то
-            char* msg = new char[MAX_MY_STR]; //////////////////////////////
+            char* msg = new char[MAX_MY_STR]; ///////////////////////////////////////////////////////////////////////////////////////////
             sprintf_s(msg, MAX_MY_STR, "Bad format for car #%d in file \"%s\"", carNumber, path); //выводим информацию об ошибке
             throw msg; //выбрасываем ошибку
         }
         return false;
     }
     string tmp;
-    getline(file, tmp); //считываем строку. тк последним считали число, чтобы не считывать пустоту, "съедае" строку
+    getline(file, tmp); //считываем строку. тк последним считали число, чтобы не считывать пустоту, "съедаем" строку
     getline(file, model); //считываем модель машины 7
     getline(file, tireBrand); //считываем марку шин
     file >> trunkVolume; //считываем объем двигателя
+    file >> engineVolume;
     /*задаем данные, которые считали*/
     builder.setColor((Color)color);
     builder.setEngineType((EngineType)engineType);
@@ -280,6 +306,7 @@ bool loadCar(CarBuilder& builder, ifstream& file, int carNumber, const char* pat
     builder.setModel(model);
     builder.setTireBrand(tireBrand);
     builder.setTrunkVolume(trunkVolume);
+    builder.setEngineVolume(engineVolume);
     return true;
 }
 
@@ -301,7 +328,7 @@ void loadAll(vector<Car*>& cars) {
                 delete builder.getResult(); //удаляем, так как создавали, но не применили
                 break;
             }
-            if (!success) { /////////////////////////////////////
+            if (!success) { //////////////////////////////////////////////////////////////////////////////////
                 delete builder.getResult();
                 break;
             }
@@ -427,33 +454,35 @@ int findCar(vector<Car*>& cars) {
             // но не более чем MAX_IGNORE символов.
             cin.ignore(MAX_IGNORE, '\n');
         }
-        // выводим сообщение об ошибке
+        // просим пользователя попробовать ввести данные снова
         cout << "Wrong choice. Try again" << endl;
     }
     // возвращаем номер машины - 1, тк начинается с 0
     return carNumber - 1;
 }
 
-void editCar(vector<Car*>& cars) {
-    int carIndex = findCar(cars);
-    Car* newCar = nullptr;
+//изменение машины
+void editCar(vector<Car*>& cars) { 
+    int carIndex = findCar(cars); //находим индекс машины
+    Car* newCar = nullptr; //указатель типа car
     int choice = 1;
     cout << "[1] KIA" << endl;
     cout << "[2] Nissan" << endl;
     cout << "[3] Toyota" << endl;
     cout << "[4] VAZ" << endl;
     cout << "[other] back" << endl;
-    if (!(cin >> choice)) {
-        cin.clear();
-        cin.ignore(MAX_IGNORE, '\n');
+    if (!(cin >> choice)) { // если не считали число
+        cin.clear(); // убираем факт наличия ошибки при вводе из cin.
+        cin.ignore(MAX_IGNORE, '\n'); // игнорируем все введённые пользователем символы вплоть до и включая символ '\n',
+                                     // но не более чем MAX_IGNORE символов.
         return;
     }
-    if (choice < 1 || choice > 4) {
+    if (choice < 1 || choice > 4) { //если выбор < 1 || > 4, то выходим
         return;
     }
     switch (choice) {
     case 1:
-        newCar = makeKia();
+        newCar = makeKia(); //////////////////////////////////////////////////////////////////////////////
         break;
     case 2:
         newCar = makeNissan();
@@ -465,19 +494,21 @@ void editCar(vector<Car*>& cars) {
         newCar = makeVaz();
         break;
     }
-    delete cars[carIndex];
-    cars[carIndex] = newCar;
+    delete cars[carIndex]; //удаляем машину
+    cars[carIndex] = newCar; //ставим на ее место созданную машину
 }
 
-void removeCar(vector<Car*>& cars) {
-    int carIndex = findCar(cars);
-    delete cars[carIndex];
-    cars.erase(cars.begin() + carIndex);
+//удаление машины
+void removeCar(vector<Car*>& cars) { 
+    int carIndex = findCar(cars); //получаем индекс машины
+    delete cars[carIndex]; //удаляем машину
+    cars.erase(cars.begin() + carIndex); //удаляем доступ к машине
 }
 
+//вывод машины
 void showCar(vector<Car*>& cars) {
-    int carIndex = findCar(cars);
-    cars[carIndex]->display();
+    int carIndex = findCar(cars); //получаем индекс машины
+    cars[carIndex]->display(); //отображаем ее
 }
 
 int main()
@@ -488,7 +519,13 @@ int main()
         choice = makeChoice(); //получили команду, которую выбрал пользователь
         switch (choice) {
         case Choice::PRINT_ALL: //вывод машин 
-            printAll(cars); 
+            if (cars.empty())
+            {
+                cout << "All the cars are removed or the cars are not created" << endl;
+            }
+            else {
+                printAll(cars);
+            }
             break;
         case Choice::MAKE_KIA: //создание киа
             cout << "Creating KIA" << endl;
@@ -514,13 +551,31 @@ int main()
             loadAll(cars); //грузим из файла
             break;
         case Choice::EDIT_CAR: //изменить машину
-            editCar(cars);
+            if (cars.empty())
+            {
+                cout << "All the cars are removed or the cars are not created" << endl;
+            }
+            else {
+                editCar(cars);
+            }
             break;
         case Choice::REMOVE_CAR: //удалить машину
-            removeCar(cars);
+            if (cars.empty())
+            {
+                cout << "All the cars are removed or the cars are not created" << endl;
+            }
+            else {
+                removeCar(cars);
+            }
             break;
         case Choice::SHOW_CAR: //вывести машину на экран
-            showCar(cars);
+            if (cars.empty())
+            {
+                cout << "All the cars are removed or the cars are not created" << endl;
+            }
+            else {
+                showCar(cars);
+            }
             break;
         }
     } while (choice != Choice::EXIT); //пока не выход
