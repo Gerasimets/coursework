@@ -13,4 +13,3 @@ public:
     int getY();
     int getZ();
 };
-

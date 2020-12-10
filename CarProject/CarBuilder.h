@@ -19,5 +19,5 @@ public:
     void setTireBrand(std::string value);
     void setTrunkVolume(double value);
     void setEngineVolume(double value);
-    Car *getResult(); // почему функция со звездочкой /////////////////////////////////////
+    Car *getResult(); //
 };

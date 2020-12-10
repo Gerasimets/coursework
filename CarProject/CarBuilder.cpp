@@ -50,4 +50,3 @@ void CarBuilder::setEngineVolume(double value) {
 Car *CarBuilder::getResult() {
     return car; //возвращает адрес того, где хранится машина
 }
-

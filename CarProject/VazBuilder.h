@@ -7,4 +7,3 @@ public:
     virtual void reset() override;
     void setTrunkOnRoof(bool value); //возможность установить багажник на крышу
 };
-

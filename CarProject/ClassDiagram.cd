@@ -3,19 +3,19 @@
   <Class Name="Car">
     <Position X="4.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAASAAAgBAohAEAAAABEAABCAAAAAQRAoAAY=</HashCode>
+      <HashCode>AAAIAAAAAASAAAghAohAEAAAABEAABCAAAAAQRAoAAY=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CarBuilder">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIBAAEAAAAAAgBAgAAAIAAADAAQAAAAAAAQQAIAAA=</HashCode>
+      <HashCode>AAAIBAAEAAAAAAghAgAAAIAAADAAQAAAAAAAQQAIAAA=</HashCode>
       <FileName>CarBuilder.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="KiaBuilder">
-    <Position X="0.75" Y="4.75" Width="1.5" />
+    <Position X="0.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>KiaBuilder.h</FileName>
@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="NissanBuilder">
-    <Position X="5.5" Y="4.75" Width="1.5" />
+    <Position X="5.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAACAAAAA=</HashCode>
       <FileName>NissanBuilder.h</FileName>
@@ -43,7 +43,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ToyotaBuilder">
-    <Position X="3.25" Y="4.75" Width="1.5" />
+    <Position X="3.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABEAAAAAAAAAAAIAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>ToyotaBuilder.h</FileName>
@@ -57,7 +57,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="VazBuilder">
-    <Position X="8" Y="4.75" Width="1.5" />
+    <Position X="8" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAAAEAAAAABAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>VazBuilder.h</FileName>
@@ -80,21 +80,21 @@
   <Enum Name="Choice" Collapsed="true">
     <Position X="9.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AARAAAAgAAAAAAAAAAggAAAAgAFAAAEAAAGAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAQAAgAEAAAgAAACCCEAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>main.cpp</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Color" Collapsed="true">
     <Position X="11.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAABAEAIgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAAAAAgAAIAAAAAAAABAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="EngineType" Collapsed="true">
     <Position X="9.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Enum>

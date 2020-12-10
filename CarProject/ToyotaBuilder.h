@@ -7,4 +7,3 @@ public:
     virtual void reset() override;
     void setAutomaticTransmission(bool value); // тайота отличается возможностью установить автоматическая коробка передач
 };
-

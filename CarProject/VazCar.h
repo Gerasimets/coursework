@@ -11,4 +11,3 @@ public:
     void setTrunkOnRoof(bool value); //возможность установить багажник на крышу
     virtual void display() override;
 };
-

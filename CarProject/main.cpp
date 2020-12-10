@@ -2,33 +2,32 @@
 ////
 
 /*
-1
-2
-blue
-injector
-100
-50
-40
-2000
+0
+0
+300
+200
+300
+1989
 5
-KIA Rio
+kia rio
 somebrand
+450
 1.9
-yes
 1
+
 3
-yellow
-diesel
-20
-30
-50
-1980
-7
-Nissan Liberty
-some other brand
-1.8
-no
 1
+300
+200
+180
+2005
+6
+Nissan Liberty
+some brend
+209
+1.5
+0
+
 */
 
 #include "stdafx.h"
@@ -101,9 +100,9 @@ void printAll(vector<Car*>& cars) { //вывод машин на экран
     }
 }
 
-void skipLine() {  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void skipLine() {  //пропуск строки
     string tmp;
-    getline(cin, tmp); //считываем 
+    getline(cin, tmp); //считываем строку, вплоть до перехода на новую строку
 }
 
 void inputMainFeatures(CarBuilder& builder) { //ввод общих характеристик
@@ -284,7 +283,7 @@ bool loadCar(CarBuilder& builder, ifstream& file, int carNumber, const char* pat
     if (!(file >> color >> engineType >> x >> y >> z >> year >>
         doorsCount)) { //читаем из файла данные, если не удалось этого сделать и..
         if (!file.eof()) { // ..и если это не конец файла, то
-            char* msg = new char[MAX_MY_STR]; ///////////////////////////////////////////////////////////////////////////////////////////
+            char* msg = new char[MAX_MY_STR]; //
             sprintf_s(msg, MAX_MY_STR, "Bad format for car #%d in file \"%s\"", carNumber, path); //выводим информацию об ошибке
             throw msg; //выбрасываем ошибку
         }
@@ -482,7 +481,7 @@ void editCar(vector<Car*>& cars) {
     }
     switch (choice) {
     case 1:
-        newCar = makeKia(); //////////////////////////////////////////////////////////////////////////////
+        newCar = makeKia();
         break;
     case 2:
         newCar = makeNissan();
